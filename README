@@ -59,7 +59,7 @@
  
  12) run "copy target\HelloRest.war C:\Users\Administrator\Documents\apache-tomcat-7.0.32\webapps\"
  
- 13) cd into C:\Users\Administrator\Documents\apache-tomcat-7.0.32\bin. Run "catalina.bat run"
+ 13) cd into C:\Users\Administrator\Documents\apache-tomcat-7.0.32. Run "bin\catalina.bat run"
  
  14) Run Jmeter on desktop. Open test file at C:\Users\Administrator\Documents\Github\HelloRest\test.jmx. Run the test, navigate to Report and note the Throughput.
  
