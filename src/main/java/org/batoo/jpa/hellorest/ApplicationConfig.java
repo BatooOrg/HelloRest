@@ -104,8 +104,8 @@ public class ApplicationConfig {
 
 		dataSource.setDriverClass("com.mysql.jdbc.Driver");
 		dataSource.setJdbcUrl("jdbc:mysql://dbhost:3306/benchmark?zeroDateTimeBehavior=convertToNull");
-		dataSource.setUsername("root");
-		dataSource.setPassword("");
+		dataSource.setUsername("bechmark");
+		dataSource.setPassword("benchmark");
 		dataSource.setMaxConnectionsPerPartition(100);
 		dataSource.setMinConnectionsPerPartition(25);
 		dataSource.setReleaseHelperThreads(0);
