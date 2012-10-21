@@ -1,0 +1,70 @@
+ Welcome to Batoo JPA
+
+
+ F A S T E S T     J P A   I M P L E M E N T A T I O N
+
+ Batoo JPA is the fastest JPA Implementation by far.
+
+ It is 10 ~ 20 times faster then the leading JPA providers.
+
+
+ L I C E N S E
+
+ Copyright (c) 2012 - Batoo Software ve Consultancy Ltd.
+
+ This copyrighted material is made available to anyone wishing to use, modify,
+ copy, or redistribute it subject to the terms and conditions of the GNU
+ Lesser General Public License, as published by the Free Software Foundation.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License
+ for more details.
+
+ You should have received a copy of the GNU Lesser General Public License
+ along with this distribution; if not, write to:
+ Free Software Foundation, Inc.
+ 51 Franklin Street, Fifth Floor
+ Boston, MA  02110-1301  USA
+
+
+ H E L L O R E S T
+
+ This project is a demonstration of how fast Batoo JPA compared to Hibernate on end to end context.
+
+ PREPERATION
+ ===========
+ 
+ 1) Create an Amazon EC2 Account if you do not have one.
+
+ 2) Login to your Amazon account and go to RDS - Relational Database Service.
+  
+ 3) Launch a Mysql RDS, (Step I) db.m2.4xlarge, 5GB, id benchmark, username benchmark, password, benchmark, (Step II) databasename benchmark, zone us-east-1a,  
+
+ 4) Go to 'DB security Groups' and select 'default'. Add CDR 0.0.0.0/0. Make sure it is 'authorized'.  
+
+ 5) Go back to 'DB Instances', select 'benchmark' and when Status available ping the host name given at 'Enpoint' and note the resolved ip.  
+ 
+ 6) Go to EC2, launch a Windows instance with 
+
+ 7) Open C:\Windows\System32\drivers\etc\hosts with Wordpad and update the dbhost entry with the IP you obtained at step #5. Save and quit.
+
+ 8) Batoo JPA is already checked out to C:\Users\Administrator\Documents\Github. Go to the folder and right click on BatooJPA -> Git Pull  
+ 
+ 9) Open a command prompt and cd into C:\Users\Administrator\Documents\Github\BatooJPA. Run "mvn -Dmaven.test.skip install".
+ 
+ 10) Batoo JPA is already checked out to C:\Users\Administrator\Documents\Github. Go to the folder and right click on HelloRest -> Git Pull
+ 
+ 11) Open a command prompt and cd into C:\Users\Administrator\Documents\Github\HelloRest. Run "mvn -Dmaven.test.skip install".
+ 
+ 12) run "copy target\HelloRest.war C:\Users\Administrator\Documents\apache-tomcat-7.0.32\webapps\"
+ 
+ 13) cd into C:\Users\Administrator\Documents\apache-tomcat-7.0.32\bin. Run "catalina.bat run"
+ 
+ 14) Run Jmeter on desktop. Open test file at C:\Users\Administrator\Documents\Github\HelloRest\test.jmx. Run the test, navigate to Report and note the Throughput.
+ 
+ 15) Go to  C:\Users\Administrator\Documents\Github\HelloRest, Edit the file src/main/java/org/batoo/jpa/hellorest/ApplicationConfig.java and change BATOO_OR_HIBERNATE field to false.
+ 
+ 16) Repeat the steps 11 - 14. 
+ 
+ 17) Coparethe throughputs with 1) Batoo 2) Hibernate
