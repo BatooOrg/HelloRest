@@ -81,7 +81,7 @@ public class ApplicationConfig {
 		factory.setDataSource(this.getDatasource());
 
 		final Properties properties = new Properties();
-		properties.put("hibernate.hbm2ddl.auto", "create-drop");
+		properties.put("hibernate.hbm2ddl.auto", "create");
 		properties.put("org.batoo.jpa.ddl", "DROP");
 		factory.setJpaProperties(properties);
 
