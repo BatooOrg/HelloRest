@@ -31,40 +31,65 @@
  H E L L O R E S T
 
  This project is a demonstration of how fast Batoo JPA compared to Hibernate on end to end context.
+ Application has 4 layers, (1) Spring Rest MVC, (2) Spring Data, (3) JPA, (4) MySQL JDBC
 
- PREPERATION
+ The following tests are run on Ubuntu 12.04 on Intel(R) Core(TM) i7-2670QM CPU @ 2.20GHz with 250GB SSD Disk
+
+ RUNNING
  ===========
  
- 1) Create an Amazon EC2 Account if you do not have one.
+ 1) Install Java by running "sudo apt-get install openjdk-7-jdk"
+ 
+ 2) Download and install Apache Maven 3.0.4
+ 
+ 3) Download and install Apache JMeter 2.8
+ 
+ 4) Download and install Apache Tomcat 7.0.32
+ 
+ 5) Install git by running "sudo apt-get install git"
+ 
+ 6) Install a separate MySQL Server.
+ 
+ 7) Check out and install Batoo JPA
+ 	git clone git://github.com/BatooOrg/BatooJPA.git
+ 	cd BatooJPA
+ 	mvn install -Dmaven.test.skip  
+ 
+ 8) Checkout and install HelloRest, edit ApplicationConfig and set the MySQL Connection parameters
+ 	git clone git://github.com/BatooOrg/HelloRest.git
+ 	cd HelloRest
+ 	gedit /src/main/java/org/batoo/jpa/hellorest/ApplicationConfig.java 
+ 	mvn package
+ 	
+ 9) Copy the WAR file in HelloRest-XXX.war into Tomcat webapps
 
- 2) Login to your Amazon account and go to RDS - Relational Database Service.
+ 10) Change Directory to Tomcat Directory and run tomcat by "bin/catalina.sh run"
   
- 3) Launch a Mysql RDS, (Step I) db.m2.4xlarge, 5GB, id benchmark, username benchmark, password, benchmark, (Step II) databasename benchmark, zone us-east-1a,  
+ 11) Run Apache JMeter and load the test test.jmx in HelloRest project.
+ 
+ 12) Run the test to warm Tomcat.
+ 
+ 13) Change the Counters in the test plan from 1000001 -> 2000001 & 1000001 -> 2000001    
 
- 4) Go to 'DB security Groups' and select 'default'. Add CDR 0.0.0.0/0. Make sure it is 'authorized'.  
+ 14) Run the test for benchmark now and at the end of the test note down the TesPlan -> ThreadGroup -> Aggregate Report, Througput Column
+ 
+ 15) Change back the counters to 2000001 -> 1000001 & 2000001 -> 1000001
 
- 5) Go back to 'DB Instances', select 'benchmark' and when Status available ping the host name given at 'Enpoint' and note the resolved ip.  
+ 16) Edit /src/main/java/org/batoo/jpa/hellorest/ApplicationConfig.java and change BATOO_OR_HIBERNATE to false
  
- 6) Go to EC2, launch a Windows instance with 
-
- 7) Open C:\Windows\System32\drivers\etc\hosts with Wordpad and update the dbhost entry with the IP you obtained at step #5. Save and quit.
-
- 8) Batoo JPA is already checked out to C:\Users\Administrator\Documents\Github. Go to the folder and right click on BatooJPA -> Git Pull  
+ 17) Repeat steps (8) ~ (14)
  
- 9) Open a command prompt and cd into C:\Users\Administrator\Documents\Github\BatooJPA. Run "mvn -Dmaven.test.skip install".
  
- 10) Batoo JPA is already checked out to C:\Users\Administrator\Documents\Github. Go to the folder and right click on HelloRest -> Git Pull
+ R E S U L T S
  
- 11) Open a command prompt and cd into C:\Users\Administrator\Documents\Github\HelloRest. Run "mvn -Dmaven.test.skip install".
+ On given hardware following are the throughputs obtained
  
- 12) run "copy target\HelloRest.war C:\Users\Administrator\Documents\apache-tomcat-7.0.32\webapps\"
+ Batoo JPA 2681 Req/s
+ Hibernate 1742 Req/s
+ Ratio ~   153%
  
- 13) cd into C:\Users\Administrator\Documents\apache-tomcat-7.0.32. Run "bin\catalina.bat run"
+ As HelloRest application consists of 4 layers, Replacing Hibernate with JPA virtually saves you the heavy CPU resources spent by 
+ Hibernate. As this big chunk of CPU is now available to the rest of the application, the application performance increases more then half.
  
- 14) Run Jmeter on desktop. Open test file at C:\Users\Administrator\Documents\Github\HelloRest\test.jmx. Run the test, navigate to Report and note the Throughput.
  
- 15) Go to  C:\Users\Administrator\Documents\Github\HelloRest, Edit the file src/main/java/org/batoo/jpa/hellorest/ApplicationConfig.java and change BATOO_OR_HIBERNATE field to false.
- 
- 16) Repeat the steps 11 - 14. 
- 
- 17) Coparethe throughputs with 1) Batoo 2) Hibernate
+ More information on BAtoo JPA is available at http://batoo.jp   

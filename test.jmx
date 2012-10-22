@@ -15,7 +15,7 @@
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">10000</stringProp>
+          <stringProp name="LoopController.loops">250</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">25</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
@@ -59,7 +59,7 @@
         </ResultCollector>
         <hashTree/>
         <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Create Id Generator" enabled="true">
-          <stringProp name="CounterConfig.start">1</stringProp>
+          <stringProp name="CounterConfig.start">100001</stringProp>
           <stringProp name="CounterConfig.end"></stringProp>
           <stringProp name="CounterConfig.incr">2</stringProp>
           <stringProp name="CounterConfig.name">id</stringProp>
@@ -68,7 +68,7 @@
         </CounterConfig>
         <hashTree/>
         <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Update Id Generator" enabled="true">
-          <stringProp name="CounterConfig.start">2</stringProp>
+          <stringProp name="CounterConfig.start">100002</stringProp>
           <stringProp name="CounterConfig.end"></stringProp>
           <stringProp name="CounterConfig.incr">2</stringProp>
           <stringProp name="CounterConfig.name">id2</stringProp>
@@ -140,6 +140,33 @@
           </HeaderManager>
           <hashTree/>
         </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Persons" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/HelloRest/person</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Person" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -183,7 +210,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;id&quot;:${id2},&quot;name&quot;:&quot;John Doe&quot;,&quot;version&quot;:1,&quot;addresses&quot;:[{&quot;id&quot;:${id2},&quot;addrLines&quot;:[&quot;123 W. 1st St.&quot;],&quot;city&quot;:&quot;Univille&quot;,&quot;province&quot;:&quot;US&quot;,&quot;postalCode&quot;:&quot;12345&quot;,&quot;country&quot;:{&quot;id&quot;:3,&quot;name&quot;:&quot;US&quot;}}]}</stringProp>
+                <stringProp name="Argument.value">{&quot;id&quot;:${id2},&quot;name&quot;:&quot;John Doe&quot;,&quot;version&quot;:1,&quot;addresses&quot;:[{&quot;id&quot;:${id2},&quot;addrLines&quot;:[&quot;123 W. 1st St.&quot;],&quot;city&quot;:&quot;Univille&quot;,&quot;province&quot;:&quot;TR&quot;,&quot;postalCode&quot;:&quot;12345&quot;,&quot;country&quot;:{&quot;id&quot;:1,&quot;name&quot;:&quot;Turkey&quot;}}]}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -214,6 +241,33 @@
           </HeaderManager>
           <hashTree/>
         </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Persons" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/HelloRest/person</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Delete Person" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
             <collectionProp name="Arguments.arguments"/>

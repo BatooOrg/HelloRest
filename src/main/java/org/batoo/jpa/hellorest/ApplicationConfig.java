@@ -58,6 +58,12 @@ public class ApplicationConfig {
 	 */
 	private static final boolean BATOO_OR_HIBERNATE = true;
 
+	private static final String DBHOST = "dbhost";
+	private static final String PORT = "3306";
+	private static final String DBNAME = "test";
+	private static final String USERNAME = "root";
+	private static final String PASSWORD = "";
+
 	/**
 	 * Returns the entity manager factory.
 	 * 
@@ -103,12 +109,14 @@ public class ApplicationConfig {
 		final DataSourceImpl dataSource = new DataSourceImpl();
 
 		dataSource.setDriverClass("com.mysql.jdbc.Driver");
-		dataSource.setJdbcUrl("jdbc:mysql://dbhost:3306/benchmark?zeroDateTimeBehavior=convertToNull");
-		dataSource.setUsername("benchmark");
-		dataSource.setPassword("benchmark");
+		dataSource.setJdbcUrl("jdbc:mysql://" + ApplicationConfig.DBHOST + ":" + ApplicationConfig.PORT + "/" + ApplicationConfig.DBNAME
+			+ "?zeroDateTimeBehavior=convertToNull&?useCompression=true");
+		dataSource.setUsername(ApplicationConfig.USERNAME);
+		dataSource.setPassword(ApplicationConfig.PASSWORD);
 		dataSource.setMaxConnectionsPerPartition(100);
 		dataSource.setMinConnectionsPerPartition(25);
 		dataSource.setReleaseHelperThreads(0);
+		dataSource.setStatementsCacheSize(100);
 
 		return dataSource;
 	}
