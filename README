@@ -61,7 +61,7 @@
  	gedit /src/main/java/org/batoo/jpa/hellorest/ApplicationConfig.java 
  	mvn package
  	
- 9) Copy the WAR file in HelloRest-XXX.war into Tomcat webapps
+ 9) Copy the WAR file in HelloRest.war into Tomcat webapps
 
  10) Change Directory to Tomcat Directory and run tomcat by "bin/catalina.sh run"
   
