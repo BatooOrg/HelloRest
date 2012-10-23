@@ -48,7 +48,7 @@
  
  5) Install git by running "sudo apt-get install git"
  
- 6) Install a separate MySQL Server.
+ 6) Install a separate MySQL Server. Update the DB Settings in in the step (8) third command when editing the file gedit /src/main/java/org/batoo/jpa/hellorest/ApplicationConfig.java.    
  
  7) Check out and install Batoo JPA
  	git clone git://github.com/BatooOrg/BatooJPA.git
@@ -88,8 +88,7 @@
  Hibernate 1742 Req/s
  Ratio ~   153%
  
- As HelloRest application consists of 4 layers, Replacing Hibernate with JPA virtually saves you the heavy CPU resources spent by 
- Hibernate. As this big chunk of CPU is now available to the rest of the application, the application performance increases more then half.
+ As HelloRest application consists of 4 layers, Replacing Hibernate with JPA virtually saves you the heavy CPU resources spent by Hibernate. As this big chunk of CPU is now available to the rest of the application, the application performance increases more then half.
  
  
- More information on BAtoo JPA is available at http://batoo.jp   
+ More information on BAtoo JPA is available at http://batoo.jp
