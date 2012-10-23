@@ -58,7 +58,8 @@ public class ApplicationConfig {
 	 */
 	private static final boolean BATOO_OR_HIBERNATE = true;
 
-	private static final String DBHOST = "dbhost";
+	//UPDATE WITH YOUR MYSQL SERVER DB SETTINGS
+	private static final String DBHOST = "MYSQL_SERVER_HOST";
 	private static final String PORT = "3306";
 	private static final String DBNAME = "test";
 	private static final String USERNAME = "root";
