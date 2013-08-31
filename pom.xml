@@ -32,7 +32,7 @@
 	<description>This project benchmarks Batoo vs Hibernate - The project is based on https://github.com/SpringSource/spring-data-rest-webmvc</description>
 
 	<properties>
-		<batooVersion>0.1.7-SNAPSHOT</batooVersion>
+		<batooVersion>2.0.1.2</batooVersion>
 		<hibernateVersion>4.0.1.Final</hibernateVersion>
 
 		<slf4jVersion>1.6.6</slf4jVersion>
